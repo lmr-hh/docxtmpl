@@ -2,6 +2,7 @@ import io
 import json
 import subprocess
 import tempfile
+import zipfile
 from os import path
 
 import docxtpl
@@ -26,9 +27,12 @@ def do_template() -> Response:
         raise BadRequest("no template provided")
 
     app.logger.info("Rendering docx template")
-    template = docxtpl.DocxTemplate(
-        io.BytesIO(request.files["template"].stream.read()))
-    template.render(context, autoescape=True)
+    try:
+        template = docxtpl.DocxTemplate(
+            io.BytesIO(request.files["template"].stream.read()))
+        template.render(context, autoescape=True)
+    except zipfile.BadZipFile:
+        raise BadRequest("invalid docx file")
 
     with tempfile.TemporaryDirectory() as tmpdir:
         app.logger.info(f"Saving rendered docx file to {tmpdir}")
