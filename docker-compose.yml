@@ -1,0 +1,10 @@
+services:
+  templater:
+    build: .
+    container_name: Templater
+    volumes:
+      - ./templater:/app/templater
+    ports:
+      - 8080:8080
+    environment:
+      AUTH_TOKEN: Foobar
