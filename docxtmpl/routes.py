@@ -19,9 +19,9 @@ def do_template() -> Response:
     app.logger.info("Received conversion request")
     context = parse_request()
     try:
-        template_filename = path.basename(
+        template_filename = path.splitext(
             request.files["template"].filename or "file.docx"
-        )
+        )[0]
     except KeyError:
         raise BadRequest("no template provided")
 
