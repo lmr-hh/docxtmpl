@@ -1,4 +1,4 @@
-# docx-templater
+# docxtmpl
 
 A simple service written in Python that takes a docx file, renders it using [doxtpl](https://docxtpl.readthedocs.io) and then converts it to PDF using [LibreOffice](https://libreoffice.org).
 
