@@ -30,6 +30,7 @@ Content-Type: multipart/form-data; boundary=AaB03x--
 
 --AaB03x--
 Content-Disposition: form-data; name="template"; filename="some-filename.docx"
+Content-Type: application/vnd.openxmlformats-officedocument.wordprocessingml.document
 
 ... template file contents
 --AaB03x--
