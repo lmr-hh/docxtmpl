@@ -18,7 +18,6 @@ def do_template() -> Response:
 
     app.logger.info("Received conversion request")
     context = parse_request()
-    print(request.files)
     try:
         template_filename = path.basename(request.files["template"].filename or "file.docx")
     except KeyError:
