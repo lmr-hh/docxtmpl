@@ -12,9 +12,10 @@ docker run -e AUTH_TOKEN=<token> ghcr.io/lmr-hh/docx-templater
 
 The image can be configured with the following environment variables
 
-| Variable     | Default   | Description                                                  |
-| ------------ | --------- | ------------------------------------------------------------ |
-| `AUTH_TOKEN` | *Not set* | If you set `AUTH_TOKEN` to a non-empty string, each request must provide the value as `Bearer` token, otherwise a 401 or 403 error will be returned. If you leave this unset, every request is accepted. |
+| Variable          | Default   | Description                                                  |
+| ----------------- | --------- | ------------------------------------------------------------ |
+| `AUTH_TOKEN`      | *Not set* | If you set `AUTH_TOKEN` to a non-empty string, each request must provide the value as `Bearer` token, otherwise a 401 or 403 error will be returned. If you leave this unset, every request is accepted. |
+| `AUTH_TOKEN_FILE` | *Not set* | If you want to use Docker secrets you can set `AUTH_TOKEN_FILE` instead of `AUTH_TOKEN`. An explicit `AUTH_TOKEN` takes precedence over this field |
 
 The docker container contains some commonly used fonts.
 
