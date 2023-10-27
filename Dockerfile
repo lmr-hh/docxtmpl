@@ -45,5 +45,5 @@ USER templater
 
 COPY ./templater/ ./templater
 
-EXPOSE 8000
+EXPOSE 8080
 CMD ["waitress-serve", "templater:app"]
