@@ -1,9 +1,9 @@
 services:
-  templater:
+  docxtmpl:
     build: .
     container_name: Templater
     volumes:
-      - ./templater:/app/templater
+      - ./docxtmpl:/app/docxtmpl
     ports:
       - 8080:8080
     environment:

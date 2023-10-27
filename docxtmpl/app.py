@@ -9,3 +9,5 @@ if os.getenv("AUTH_TOKEN_FILE"):
         auth_token = f.readline()
 if os.getenv("AUTH_TOKEN"):
     auth_token = os.getenv("AUTH_TOKEN")
+
+print(f"Token: {auth_token}")

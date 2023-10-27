@@ -7,7 +7,7 @@ A simple service written in Python that takes a docx file, renders it using [dox
 The project is packaged as a Docker container. Run it as
 
 ```shell
-docker run -e AUTH_TOKEN=<token> ghcr.io/lmr-hh/docx-templater
+docker run -e AUTH_TOKEN=<token> ghcr.io/lmr-hh/docxtmpl
 ```
 
 The image can be configured with the following environment variables
@@ -21,7 +21,7 @@ The docker container contains some commonly used fonts.
 
 ## Using the Service
 
-The `docx-templater` service accepts Multipart `POST` requests containing exactly one `template` file and a `data` field containing a JSON object with the templating context. A request might look like this:
+The `docxtmpl` service accepts Multipart `POST` requests containing exactly one `template` file and a `data` field containing a JSON object with the templating context. A request might look like this:
 
 ```http
 POST / HTTP/1.1

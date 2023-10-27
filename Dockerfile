@@ -37,13 +37,13 @@ ENV PYTHONDONTWRITEBYTECODE 1
 WORKDIR /app
 
 COPY requirements.txt ./
-RUN adduser --disabled-password --uid 1000 templater \
+RUN adduser --disabled-password --uid 1000 docxtmpl \
     && pip install --upgrade pip \
     && pip install -r requirements.txt
 
-USER templater
+USER docxtmpl
 
-COPY ./templater/ ./templater
+COPY docxtmpl/ ./docxtmpl
 
 EXPOSE 8080
-CMD ["waitress-serve", "templater:app"]
+CMD ["waitress-serve", "docxtmpl:app"]
