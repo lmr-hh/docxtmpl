@@ -38,6 +38,8 @@ def do_template() -> Response:
         ))
     except zipfile.BadZipFile:
         raise BadRequest("invalid docx file")
+    except jinja2.exceptions.TemplateSyntaxError as error:
+        raise BadRequest(error.message)
 
     with tempfile.TemporaryDirectory() as tmpdir:
         app.logger.info(f"Saving rendered docx file to {tmpdir}")
