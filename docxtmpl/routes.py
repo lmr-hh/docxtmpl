@@ -10,7 +10,7 @@ from flask import request, Response, send_file
 from werkzeug.datastructures import WWWAuthenticate
 from werkzeug.exceptions import BadRequest, Forbidden, InternalServerError, Unauthorized
 
-from .app import app, auth_token
+from .app import app, api_keys
 
 
 @app.post('/')
@@ -68,13 +68,10 @@ def parse_request() -> dict:
     :return: The templating context data.
     """
 
-    if auth_token and request.authorization is None:
+    if api_keys and "Api-Key" not in request.headers:
         app.logger.warning("Request not authorized, aborting")
-        raise Unauthorized(www_authenticate=WWWAuthenticate(auth_type="bearer"))
-    if auth_token and (
-            request.authorization.type != "bearer"
-            or request.authorization.token != auth_token
-    ):
+        raise Unauthorized()
+    if api_keys and request.headers["Api-Key"] not in api_keys:
         app.logger.warning("Request credentials invalid, aborting")
         raise Forbidden()
     try:

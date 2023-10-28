@@ -4,8 +4,11 @@ from flask import Flask
 
 app = Flask(__name__)
 
-if os.getenv("AUTH_TOKEN_FILE"):
-    with open(os.getenv("AUTH_TOKEN_FILE"), "r") as f:
-        auth_token = f.readline().strip()
-if os.getenv("AUTH_TOKEN"):
-    auth_token = os.getenv("AUTH_TOKEN")
+api_keys = []
+
+for key, value in os.environ.items():
+    if key.upper().startswith("DOCXTMPL_API_KEY_FILE"):
+        with open(value, "r") as f:
+            api_keys.append(f.readline().strip())
+    if key.upper().startswith("DOCXTMPL_API_KEY"):
+        api_keys.append(value)
