@@ -6,6 +6,7 @@ import zipfile
 from os import path
 
 import docxtpl
+import jinja2
 from flask import request, Response, send_file
 from werkzeug.datastructures import WWWAuthenticate
 from werkzeug.exceptions import BadRequest, Forbidden, InternalServerError, Unauthorized
@@ -29,8 +30,12 @@ def do_template() -> Response:
     app.logger.info("Rendering docx template")
     try:
         template = docxtpl.DocxTemplate(
-            io.BytesIO(request.files["template"].stream.read()))
-        template.render(context, autoescape=True)
+            io.BytesIO(request.files["template"].stream.read())
+        )
+        template.render(context, jinja2.Environment(
+            autoescape=True,
+            finalize=lambda x: "" if x is None else x
+        ))
     except zipfile.BadZipFile:
         raise BadRequest("invalid docx file")
 
