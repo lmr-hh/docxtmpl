@@ -1,4 +1,4 @@
-flask~=3.0.0
+flask~=3.0.1
 waitress~=2.1.2
 docxtpl~=0.16.7
 
