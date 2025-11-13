@@ -1,5 +1,5 @@
 flask~=3.1.2
 waitress~=3.0.2
-docxtpl~=0.20.1
+docxtpl~=0.20.2
 
 werkzeug~=3.1.3
