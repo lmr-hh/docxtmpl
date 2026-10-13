@@ -1,4 +1,4 @@
-FROM python:3.14-alpine
+FROM python:3.15-alpine
 
 # Add LibreOffice and Packaged Fonts
 RUN apk add --no-cache fontconfig font-carlito libreoffice openjdk17 \
